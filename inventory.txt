@@ -1,2 +1,7 @@
 test,45,45
 test1,465,45
+pomme ,400 ,25 
+carrotte,58,78
+hadrienesclave,900,1
+z ,58,58
+y,54,54
