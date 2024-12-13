@@ -26,8 +26,8 @@ def afficher_inventory_csv():
         print("_______________________")
         print("Affichage des produits:")
         print("-----------------------")
-        produits = pd.read_csv("inventory.csv")
-        print(produits)
+        products = pd.read_csv("inventory.csv")
+        print(products)
     except PermissionError:
         print("Permissions insuffisantes pour ouvrir le fichier")
     except Exception as e:

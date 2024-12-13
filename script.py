@@ -1,5 +1,5 @@
-from TreeCommecerce.function import *
-from TreeCommecerce.tri import *
+from function import *
+from tri import *
 from users import *
 
 def print_interface():

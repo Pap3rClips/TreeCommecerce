@@ -7,10 +7,10 @@ def add_users():
     username = input("Veuillez entrer le nom d'utilisateur :")
     password = hash(input("Veuillez entrer le mot de passe :"))
     try: 
-        with open("users.csv", "a") as users:
+        with open("users.csv", "a") as files:
             print("Ajout de l'utilisateur dans la base de données ...")
             # hash_password = hash(password) 
-            users.write(f"{username},{password}\n") 
+            files.write(f"{username},{password}\n") 
     except PermissionError:
         print("Permissions insuffisantes pour ouvrir le fichier")
     except Exception as e:

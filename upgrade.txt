@@ -1,0 +1,6 @@
+possible upgrade axis
+
+- the user and password fonctionnality is not working
+- the code is in french and english
+- the quicksort function is not working
+- the path to file are fragile
