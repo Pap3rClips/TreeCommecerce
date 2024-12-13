@@ -7,25 +7,45 @@ def tri_bulles(liste):
     return liste
 
 def affiche_tri(nom_fichier):
+    tri = input("Veuillez choisir le type de tri (1: tri par ordre alphabétique, 2: tri par prix) : ")
     try:
         with open(nom_fichier, 'r') as f:
-            lignes = f.readlines()
-        # Supprimer les caractères de nouvelle ligne
-        lignes = [ligne.strip() for ligne in lignes]
-        # Trier les lignes par nom de produit
-        lignes_tries = tri_bulles(lignes)
-        # Afficher les produits triés
-        i = 1
-        for ligne in lignes_tries:
-            name, quantity, price = ligne.split(",")
-            print("----------------------------")
-            print(f"Produit {i}")
-            print("---")
-            print(f"Nom du produit : {name}")
-            print(f"Quantité du produit : {quantity}")
-            print(f"Prix du produit : {price}")
-            print("----------------------------")
-            i += 1
+            if tri =="1":   
+                lignes = f.readlines()
+                # Supprimer les caractères de nouvelle ligne
+                lignes = [ligne.strip() for ligne in lignes]
+                # Trier les lignes par nom de produit
+                lignes_tries = tri_bulles(lignes)
+                # Afficher les produits triés
+                i = 1
+                for ligne in lignes_tries:
+                    name, quantity, price = ligne.split(",")
+                    print("----------------------------")
+                    print(f"Produit {i}")
+                    print("---")
+                    print(f"Nom du produit : {name}")
+                    print(f"Quantité du produit : {quantity}")
+                    print(f"Prix du produit : {price}")
+                    print("----------------------------")
+                    i += 1
+            if tri =="2":
+                lignes = f.readlines()
+                # Supprimer les caractères de nouvelle ligne
+                lignes = [ligne.strip() for ligne in lignes]
+                # Trier les lignes par prix
+                lignes_tries = quicksort(lignes)
+                # Afficher les produits triés
+                i = 1
+                for ligne in lignes_tries:
+                    name, quantity, price = ligne.split(",")
+                    print("----------------------------")
+                    print(f"Produit {i}")
+                    print("---")
+                    print(f"Nom du produit : {name}")
+                    print(f"Quantité du produit : {quantity}")
+                    print(f"Prix du produit : {price}")
+                    print("----------------------------")
+                    i += 1
     except FileNotFoundError:
         print("Le fichier n'a pas pu être trouvé.")
     except PermissionError:
