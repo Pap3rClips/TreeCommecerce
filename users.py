@@ -6,6 +6,17 @@ def add_users():
     print("Formulaire d'ajout d'un nouvel utilisateur")
     username = input("Veuillez entrer le nom d'utilisateur :")
     password = hash(input("Veuillez entrer le mot de passe :"))
+    
+    if username == "admin":
+        print("---------------------------------------")
+        print("Vous ne pouvez pas créer un utilisateur avec le nom admin")
+        print("---------------------------------------")
+        return
+    if username in open('users.csv').read():
+        print("---------------------------------------")
+        print("L'utilisateur existe déjà")
+        print("---------------------------------------")
+        return
     try: 
         with open("users.csv", "a") as files:
             print("Ajout de l'utilisateur dans la base de données ...")

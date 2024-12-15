@@ -1,6 +1,6 @@
 possible upgrade axis
 
-- the user and password fonctionnality is not working
+- the user and password fonctionnality is not working : Done
 - the code is in french and english
-- the quicksort function is not working
+- the quicksort function is not working : Done , and i added the tri_selection : all done
 - the path to file are fragile
