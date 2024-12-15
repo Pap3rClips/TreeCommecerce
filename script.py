@@ -1,7 +1,7 @@
 from function import *
 from tri import *
 from users import *
-
+from api import *
 
 def call_interface():
     print("Bienvenue dans l'interface de gestion de l'inventaire et des utilisateurs")
@@ -25,22 +25,27 @@ def call_interface():
             choose = 1
             while choose != 0:
                 print("---------")
-                print("INVENTORY")
+                print("INVENTAIRE")
                 print("---------")
                 print("1 - Afficher l'inventaire")
                 print("2 - Ajouter à l'inventaire")
                 print("3 - Supprimer de l'inventaire")
                 print("4 - Trier l'inventaire")
+                print("---------")
+                print("SECURITE")
+                print("---------")
+                print("5 - Vérification de mot de passe")
+                print("6 - Alerte de sécurité")
                 if admin:
                     print("-----")
                     print("ADMIN")
                     print("-----")
-                    print("5 - Afficher les utilisateurs")
-                    print("6 - Ajouter un utilisateur")
-                    print("7 - Supprimer un utilisateur")
+                    print("7 - Afficher les utilisateurs")
+                    print("8 - Ajouter un utilisateur")
+                    print("9 - Supprimer un utilisateur")
                 print("-----------------------")
-                print("8 - Mettre à jour un utilisateur")
-                print("9 - Quitter l'interface")
+                print("10 - Mettre à jour un utilisateur")
+                print("Autre - Quitter l'interface")
                 print("-----------------------")
                 
                 choose = input("Veuillez choisir une méthode : ")
@@ -53,16 +58,20 @@ def call_interface():
                     delete_from_inventory()
                 elif choose == 4:
                     affiche_tri('inventory.csv')
+                elif choose == 5:
+                    ask_password()
+                elif choose == 6:
+                    pass
                 elif admin:
-                    if choose == 5:
+                    if choose == 7:
                         afficher_users()
-                    elif choose == 6:
+                    elif choose == 8:
                         add_users()
-                    elif choose == 7:
+                    elif choose == 9:
                         delete_users()
-                if choose == 8:
+                elif choose == 10:
                     update_users()
-                if choose == 9:
+                else:
                     choose = 0
 
 call_interface()
