@@ -21,7 +21,7 @@ def add_users():
         with open("users.csv", "a") as files:
             print("Ajout de l'utilisateur dans la base de données ...")
             # hash_password = hash(password)
-            files.write(f"{username},{password}\n") 
+            files.write(f"{username},{password['hash']},{password['salt']}\n") 
     except PermissionError:
         print("Permissions insuffisantes pour ouvrir le fichier")
     except Exception as e:
@@ -73,7 +73,7 @@ def update_users():
                 if not line.startswith(name + ','):
                     file.write(line)
                 else:
-                    file.write(f"{new_name},{password}\n")
+                    file.write(f"{new_name},{password['hash']},{password['salt']}\n")
     except FileExistsError:
         print("Le fichier n'a pas été trouvé")
     except PermissionError:
@@ -96,11 +96,18 @@ def afficher_users():
     except Exception as e:
         print(f"Erreur inconnue : {e}")
 
-def hash(password):
+def hash(password)->dict:
+    salt = os.urandom(16)
     hash_object = hashlib.sha256()
-    hash_object.update(password.encode())
-    return hash_object.hexdigest()
+    hash_object.update(salt+password.encode())
+    hashed_password = hash_object.hexdigest()
+    return {"salt" : salt.hex(), "hash" : hashed_password}
 
-hash("test")
-
-
+def verify_users(password, hashed_password, salt) -> bool:
+    hash_object = hashlib.sha256()
+    hash_object.update(password.encode() + salt.encode())
+    print(f"Comparaison {hash_object.hexdigest()} avec {hashed_password}")
+    if hash_object.hexdigest() == hashed_password:
+        return True
+    else:
+        return False
