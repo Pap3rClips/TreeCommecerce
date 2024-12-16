@@ -13,7 +13,7 @@ def call_interface():
     elif register == "2":
         user = input("Veuillez entrer votre nom d'utilisateur : ")
         password = input("Veuillez entrer votre mot de passe : ")
-        if not password in open('users.csv').read():
+        if not hash(password) in open('users.csv').read():
             print("Identifiant ou Mot de passe incorrect !!")
             return call_interface()
         elif not user in open('users.csv').read():

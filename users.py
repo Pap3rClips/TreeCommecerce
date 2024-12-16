@@ -20,7 +20,7 @@ def add_users():
     try: 
         with open("users.csv", "a") as files:
             print("Ajout de l'utilisateur dans la base de données ...")
-            # hash_password = hash(password) 
+            # hash_password = hash(password)
             files.write(f"{username},{password}\n") 
     except PermissionError:
         print("Permissions insuffisantes pour ouvrir le fichier")
@@ -97,10 +97,10 @@ def afficher_users():
         print(f"Erreur inconnue : {e}")
 
 def hash(password):
-    sel = os.urandom(32)
-    hash= hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), sel, 100000)
-    new_password =  sel + hash
-    return new_password
-    
+    hash_object = hashlib.sha256()
+    hash_object.update(password.encode())
+    return hash_object.hexdigest()
+
+hash("test")
 
 
